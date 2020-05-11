@@ -1,0 +1,11 @@
+targets:
+  $default:
+    sources:
+      - "source/**"
+      - "lib/**"
+    builders:
+      build_node_compilers|entrypoint:
+        generate_for:
+          - "source/**.dart"
+        options:
+          compiler: dartdevc
