@@ -1,0 +1,1 @@
+{"name":"node_bind","description":"","license":"MIT","homepage":"https://github.com/bohdanbirdie/dart-graphql-codegen","repository":{"type":"git","url":"https://github.com/bohdanbirdie/dart-graphql-codegen"},"author":{"name":"Bohdan Ptyts","url":"https://github.com/bohdanbirdie"},"version":"null","bin":{},"main":"node_bind.dart.js"}

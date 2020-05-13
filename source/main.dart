@@ -3,31 +3,44 @@ import 'package:json_to_dart/syntax.dart' as syntax;
 import "package:node_preamble/preamble.dart" as preamble;
 
 import 'package:js/js.dart';
-import 'package:node_interop/node.dart';
+// import 'package:node_interop/node.dart';
 import 'package:node_interop/util.dart';
 
 export 'package:json_to_dart/syntax.dart';
 
-
-createInstance(String name) {
+@JS()
+class Exports {
+  external set ClassDefinition(Function function);
+  external set TypeDefinition(Function function);
   
-  var instance = new syntax.ClassDefinition(name, false);
+}
 
-  return jsify({'addField': allowInterop(instance.addField), 'instance': instance });
+@JS()
+external Exports get exports;
+
+ClassDefinition(String name) {
+  var instance = new syntax.ClassDefinition(name, false);
+  // print(instance.hashCode);
+
+  return jsify({
+    'instance': instance,
+    'addField': allowInterop(instance.addField),
+    'toString': allowInterop(instance.toString)
+  });
+}
+
+TypeDefinition(String name) {
+  var instance = new syntax.TypeDefinition(name);
+  // print(instance.hashCode);
+
+  return jsify({
+    'instance': instance,
+  });
 }
 
 void main() {
-  // eval('');
   preamble.getPreamble();
-  // var a = new Kek('123');
-  // print(a);
-  // print("kek");
-  // var b = new ShortId();
-  // print(shortid());
-  // print(allowInterop(shortid.generate));
-  print(allowInterop(createInstance));
-  setExport('createInstance', allowInterop(createInstance));
-  setExport('ClassDefinition', syntax.ClassDefinition);
+
+  exports.ClassDefinition = allowInterop(ClassDefinition);
+  exports.TypeDefinition = allowInterop(TypeDefinition);
 }
-
-
