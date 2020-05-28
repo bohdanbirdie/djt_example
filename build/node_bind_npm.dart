@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:js/js.dart';
-import "../source/main.dart" as module_main;
+import "../src/main.js.dart" as module_main;
 @JS()
 external _Exports get exports;
 

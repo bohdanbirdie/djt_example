@@ -17,10 +17,12 @@ dev_dependencies:
   test: ^1.0.0
   build_runner: ^1.0.0
   node_preamble: ^1.4.8
-  build_node_compilers: ^0.2.0
+  # build_node_compilers: ^0.2.0
   cli_pkg: ^1.0.0-beta.6
   grinder: ^0.8.4
   source_gen: ^0.9.4
+  todo_reporter_generator:
+    path: ../todo_reporter.dart/todo_reporter_generator/
 
 
   build_test:
